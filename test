@@ -1,0 +1,21 @@
+
+
+
+git status
+
+
+git rm .gitignore
+
+git config credential.helper ""
+
+
+git add .
+
+
+git commit -m "Git ignore"
+
+git push origin master
+
+git branch mateusz
+
+git checkout mateusz
