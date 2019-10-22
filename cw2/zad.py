@@ -38,12 +38,56 @@ def zad3(text="",letera=''):
 text ="ala ma kota"
 #print(text.replace("a",""))
 print(zad3(text,'al'))
+#zad4
+#    Stwórz funkcję, która przelicza temperaturę w stopniach Celsjusza na Fahrenheit, Rankine, Kelvin.
+#    Typ konwersji powinien być przekazany w parametrze temperature_type i uwzględniać błędne wartości.
 
-#    Stwórz funkcję, która przelicza temperaturę w stopniach Celsjusza na Fahrenheit, Rankine, Kelvin. Typ konwersji powinien być przekazany w parametrze temperature_type i uwzględniać błędne wartości.
+def zad4(temperature=0, temperature_type='k'):
+    if temperature >= (-273.15):
+        if temperature_type=="k":
+            print("{}C to {}K".format(temperature,temperature+273.15 ))
+        elif temperature_type=="f":
+            print("{}C to {}F".format(temperature, temperature * 1.8+32))
+        elif temperature_type=="r":
+            print("{}C to {:.2f}R".format(temperature, (temperature  + 273.15) * 1.8))
+        else:
+            print("Zła warość typu temperatury")
+    else:
+        print("Podana temperatura nie ijstnieje najnisza temperatura to −273,15 *C")
+
+zad4(0,"r")
+
+#zad5
 #    Stwórz klasę Calculator, która będzie posiadać funkcje add, difference, multiply, divide.
+
+class Calculator:
+    def add(self,x=0,y=0):
+        return x+y
+    def difference(self,x=0,y=0):
+        return x-y
+    def multiply(self,x=0,y=0):
+        return x*y
+    def divide(self,x=0,y=1):
+        return x/y
+#zad6
 #    Stwórz klasę ScienceCalculator, która dziedziczy po klasie Calculator i dodaj dodatkowe funkcje np. potęgowanie.
+
+class ScienceCalculator(Calculator):
+    def exponentiation(self,x=0,y=0):
+        return x**y
+
+#zad7
 #    Stwórz funkcję, która wypisuje podany tekst od tyłu np. koteł -> łetok.
-#    Stwórz nowy moduł w projekcie o nazwie file_manager. Stwórz klasę FileManager z parametrem w konstruktorze file_name. Klasa będzie zawierać dwie metody: read_file oraz update_file. Funkcja update_file powinna zawierac parametr text_data, które w efekcie ma być dopisane na końcu pliku. Funkcja read_file powinna zwrócić zawartość pliku.
+def zad7(text=""):
+     print(text[::-1])
+zad7("koteł")
+
+
+
+
+
+
+
 #    Zaimportuj klasę FileManager w innym pliku, a następnie zademonstruj działanie klasy.
 #    W folderze projektu stwórz nowy virtualenv, a następnie zainstaluj moduł: https://github.com/yougov/chucknorris. Stwórz nowy moduł chuck_norris w swoim projekcie i stwórz funkcję która podłączy się pod ściągnięty moduł.
 
