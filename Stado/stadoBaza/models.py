@@ -2,7 +2,7 @@ from django.db import models
 class Dawki(models.Model):
     idDawki = models.AutoField(primary_key=True)
     nazwa = models.CharField(max_length=50)
-    wartosc = models.IntegerField(max_length=100)
+    wartosc = models.IntegerField()
     sklad = models.CharField(max_length=300)
     opis = models.CharField(max_length=500)
 class GrupyZywieniowe(models.Model):
@@ -17,13 +17,13 @@ class Krowy(models.Model):
     rasa = models.CharField(max_length=50)
     grupa = models.ForeignKey(GrupyZywieniowe, on_delete=models.CASCADE)
     opis = models.CharField(max_length=500)
-    wydajnosc = models.IntegerField(max_length=50)
-    matka = models.ForeignKey('self', on_delete=models.SET_NULL)
-    ojciec = models.ForeignKey('self', on_delete=models.SET_NULL)
+    wydajnosc = models.IntegerField()
+    matka = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,related_name='krowa')
+    ojciec = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,related_name='byk')
 class Krycia(models.Model):
     idKrycia = models.AutoField(primary_key=True)
     opis = models.CharField(max_length=500)
     data = models.DateField('data krycia')
-    byk = models.ForeignKey(Krowy.matka, on_delete=models.CASCADE)
-    krowa = models.ForeignKey(Krowy.ojciec, on_delete==models.CASCADE)
+    byk = models.ForeignKey(Krowy, on_delete=models.CASCADE,related_name='+')
+    krowa = models.ForeignKey(Krowy, on_delete=models.CASCADE,related_name='+')
 
