@@ -20,4 +20,5 @@ urlpatterns = [
 
     path('stadoBaza/', include('stadoBaza.urls')),
     path('admin/', admin.site.urls),
+
 ]
