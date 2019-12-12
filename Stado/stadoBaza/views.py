@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import generics
 from rest_framework.parsers import JSONParser
+from .serializers import Userserializer
+from django.contrib.auth.models import User
+
 
 from .models import Dawki, Krowy, Krycia, GrupyZywieniowe
 from .serializers import KrowySerializer, DawkiSerializer, KryciaSerializer, GrupyZywienioweSerializer
@@ -22,3 +26,11 @@ def dawki_list(request):
             serializer.save()
             return JsonResponse(serializer.data,status=201)
         return  JsonResponse(serializer.errors,status=400)
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = Userserializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = Userserializer
