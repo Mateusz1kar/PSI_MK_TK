@@ -2,10 +2,10 @@ from rest_framework import serializers
 from .models import Dawki, Krowy, Krycia, GrupyZywieniowe
 from django.contrib.auth.models import User
 class Userserializer(serializers.ModelSerializer):
-    dawki = serializers.PrimaryKeyRelatedField(many=True, queryset=Dawki.objects.all())
+    krowy = serializers.PrimaryKeyRelatedField(many=True, queryset=Krowy.objects.all())
     class Meta:
         model = User
-        fields = ['id', 'username', 'dawki']
+        fields = ['id', 'username', 'krowy']
 class DawkiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dawki
@@ -13,9 +13,10 @@ class DawkiSerializer(serializers.ModelSerializer):
 
 
 class KrowySerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source="owner.username")
     class Meta:
         model = Krowy
-        fields = ['Numer', 'imie', 'DataUrodzenia', 'rasa', 'grupa','opis','wydajnosc','matka','ojciec']
+        fields = ['Numer', 'imie', 'DataUrodzenia', 'rasa', 'grupa','opis','wydajnosc','matka','ojciec','owner']
 
 
 class KryciaSerializer(serializers.ModelSerializer):

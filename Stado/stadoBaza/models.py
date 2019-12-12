@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 class Dawki(models.Model):
     idDawki = models.AutoField(primary_key=True)
@@ -20,6 +21,7 @@ class Krowy(models.Model):
     wydajnosc = models.IntegerField()
     matka = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,related_name='krowa')
     ojciec = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,related_name='byk')
+    owner = models.ForeignKey(User, related_name='krowy', on_delete=models.CASCADE)
 class Krycia(models.Model):
     idKrycia = models.AutoField(primary_key=True)
     opis = models.CharField(max_length=500)
