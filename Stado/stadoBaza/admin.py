@@ -6,3 +6,6 @@ admin.site.register(Dawki)
 admin.site.register(GrupyZywieniowe)
 admin.site.register(Krycia)
 admin.site.register(Krowy)
+
+#login: mateusz
+#hasło: polskagola

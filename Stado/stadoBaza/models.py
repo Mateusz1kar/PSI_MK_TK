@@ -11,6 +11,7 @@ class GrupyZywieniowe(models.Model):
     nazwa = models.CharField(max_length=50)
     opis = models.CharField(max_length=500)
     idDawki = models.ForeignKey(Dawki, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='grupyzywieniowe', on_delete=models.CASCADE)
 class Krowy(models.Model):
     Numer = models.AutoField(primary_key=True)
     imie = models.CharField(max_length=50)
